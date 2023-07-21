@@ -7,7 +7,7 @@ project ( RayTracing
 set ( CMAKE_CXX_STANDARD 11 )
 
 set ( SOURCE_ONE_WEEKEND
-  src/main.cc
+  src/inOneWeekend/main.cc
 )
 
 # Executables
