@@ -6,6 +6,11 @@ project ( RayTracing
 
 set ( CMAKE_CXX_STANDARD 11 )
 
+include_directories(src/common)
+set (COMMON_ALL
+  src/common/vec3.h
+)
+
 set ( SOURCE_ONE_WEEKEND
   src/inOneWeekend/main.cc
 )
