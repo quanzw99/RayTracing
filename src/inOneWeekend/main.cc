@@ -1,7 +1,13 @@
 #include <iostream>
+#include <memory>
+
+using std::shared_ptr;
+using std::make_shared;
+
 #include "color.h"
 #include "ray.h"
 #include "vec3.h"
+#include "sphere.h"
 
 double hit_sphere(const point3& center, double radius, const ray& r) {
     vec3 oc = r.origin() - center;
@@ -33,7 +39,19 @@ color ray_color(const ray& r) {
     return (1.0 - t) * color(1.0, 1.0, 1.0) + t * color(0.5, 0.7, 1.0);
 }
 
+void test_shared_point() {
+    shared_ptr<double> double_ptr = make_shared<double>(0.37);
+    shared_ptr<vec3> vec3_ptr     = make_shared<vec3>(1.414214, 2.718281, 1.618034);
+    shared_ptr<sphere> sphere_ptr = make_shared<sphere>(point3(0, 0, 0), 1.0);
+
+    auto double_ptr1 = make_shared<double>(0.37);
+    auto vec3_ptr1   = make_shared<vec3>(1.414214, 2.718281, 1.618034);
+    auto sphere_ptr1 = make_shared<sphere>(point3(0, 0, 0), 1.0);
+}
+
 int main() {
+
+    test_shared_point();
 
     // Image
     const auto aspect_ratio = 16.0 / 9.0;

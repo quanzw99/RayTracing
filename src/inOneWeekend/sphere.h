@@ -15,7 +15,7 @@ class sphere: public hittable {
     public:
         vec3 center;
         double radius;
-}
+};
 
 bool sphere::hit(const ray& r, double t_min, double t_max, hit_record& rec) const {
     vec3 oc = r.origin() - center;
@@ -29,11 +29,11 @@ bool sphere::hit(const ray& r, double t_min, double t_max, hit_record& rec) cons
 
     // Find the nearest root that lies in the acceptable range.
     auto root = (-half_b - sqrtd) / a;
-    if (root < tmin || root > t_max) {
+    if (root < t_min || root > t_max) {
 
         // Find the farther one
         root = (-half_b + sqrtd) / a;
-        if (root < tmin || root > t_max) return false;
+        if (root < t_min || root > t_max) return false;
     }
 
     rec.t = root;
